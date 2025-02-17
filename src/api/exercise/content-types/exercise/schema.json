@@ -4,7 +4,8 @@
   "info": {
     "singularName": "exercise",
     "pluralName": "exercises",
-    "displayName": "Exercise"
+    "displayName": "Exercise",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,14 +22,15 @@
       "type": "string"
     },
     "photo": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "machines": {
       "type": "relation",
@@ -47,6 +49,12 @@
       "relation": "manyToMany",
       "target": "api::userff.userff",
       "mappedBy": "exercises"
+    },
+    "userId": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "exercises"
     }
   }
 }

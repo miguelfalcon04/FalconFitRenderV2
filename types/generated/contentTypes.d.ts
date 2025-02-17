@@ -670,6 +670,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToOne',
       'api::userff.userff'
     >;
+    exercises: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::exercise.exercise'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -693,6 +698,7 @@ export interface ApiExerciseExercise extends Schema.CollectionType {
     singularName: 'exercise';
     pluralName: 'exercises';
     displayName: 'Exercise';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -716,6 +722,11 @@ export interface ApiExerciseExercise extends Schema.CollectionType {
       'api::exercise.exercise',
       'manyToMany',
       'api::userff.userff'
+    >;
+    userId: Attribute.Relation<
+      'api::exercise.exercise',
+      'manyToMany',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
